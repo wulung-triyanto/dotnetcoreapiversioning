@@ -20,5 +20,17 @@
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.4.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.4.0" />
 	</ItemGroup>
+	<!-- Add this code block -->
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="dotnet tool restore" />
+		<!-- swagger-v1.json = the swagger json file name, since there is multiple version of API, we include the API version itself on the file name -->
+		<!-- $(OutputPath)\$(AssemblyName).dll = the path of our web api project assembly, we're using relatif path here -->
+		<!-- v1 and v2 = the API version, since we have 2 version, we add 2 post build event command -->
+		<!-- so basically, the amount of post build commnd is equal to the API version -->
+		<Exec Command="dotnet swagger tofile --output swagger-v1.json $(OutputPath)\$(AssemblyName).dll v1 " />
+		<Exec Command="dotnet swagger tofile --output swagger-v2.json $(OutputPath)\$(AssemblyName).dll v2 " />
+	</Target>
 </Project>
