@@ -2,8 +2,14 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Sample REST API",
-    "description": "Sample REST API for API Versioning Proof of Concept"
+    "description": "Sample REST API for API Versioning Proof of Concept",
+    "version": "V2.0.20221016234136"
   },
+  "servers": [
+    {
+      "url": "https://mediumsampleapi.azurewebsites.net/v2"
+    }
+  ],
   "paths": {
     "/sample": {
       "get": {
@@ -20,6 +26,45 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sample"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",

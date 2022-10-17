@@ -25,6 +25,7 @@ namespace API.Version.Sample.Extension
                     c.SwaggerDoc(api.GroupName, new OpenApiInfo
                     {
                         Title = "Sample REST API",
+                        Version = $"V{api.ApiVersion}.{DateTime.Now:yyyyMMddHHmmss}",
                         Description = "Sample REST API for API Versioning Proof of Concept"
                     });
                 });

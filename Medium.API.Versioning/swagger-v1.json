@@ -2,8 +2,14 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Sample REST API",
-    "description": "Sample REST API for API Versioning Proof of Concept"
+    "description": "Sample REST API for API Versioning Proof of Concept",
+    "version": "V1.0.20221016234135"
   },
+  "servers": [
+    {
+      "url": "https://mediumsampleapi.azurewebsites.net/v1"
+    }
+  ],
   "paths": {
     "/sample": {
       "get": {

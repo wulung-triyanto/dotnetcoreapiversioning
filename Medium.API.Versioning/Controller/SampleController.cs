@@ -25,5 +25,14 @@ namespace API.Version.Sample.Controller
             await Task.Delay(10);
             return Ok($"Sample action version {version}");
         }
+
+        [HttpPost("")]
+        [MapToApiVersion("2.0")]
+        [Produces("application/json")]
+        public async Task<ActionResult<string>> SamplePostAction([FromBody] int version)
+        {
+            await Task.Delay(10);
+            return Ok($"Sample post action version {version}");
+        }
     }
 }
